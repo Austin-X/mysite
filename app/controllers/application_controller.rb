@@ -1,9 +1,12 @@
-class ApplicationController < ActionController::Base
-    before_action :set_csrf_cookie
+# frozen_string_literal: true
 
-    def set_csrf_cookie
-        $hst = request.host
-        $dom = request.domain
-        cookies['XSRF-TOKEN'] = { value:  form_authenticity_token, secure: Rails.env.development?, domain: ['lawl', 'testing'] }
-    end
+class ApplicationController < ActionController::Base
+  before_action :set_csrf_cookie
+
+  def set_csrf_cookie
+    $hst = request.host
+    $dom = request.domain
+    cookies['XSRF-TOKEN'] =
+      { value: form_authenticity_token, secure: Rails.env.development?, domain: %w[lawl testing] }
+  end
 end
