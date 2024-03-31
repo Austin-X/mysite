@@ -10,10 +10,6 @@ module Mutations
     argument :author_id, Int, required: true
 
     def resolve(published_at:, author_id:)
-      p published_at
-      puts "\n\n"
-      puts author_id
-      puts "\n\n"
       book = ::Book.new(published_at:, author_id:)
       raise GraphQL::ExecutionError.new 'Error creating book', extensions: book.errors.to_hash unless book.save
 

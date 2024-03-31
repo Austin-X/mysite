@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :users
   mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql' if Rails.env.development?
   post '/graphql', to: 'graphql#execute'
   get 'author/index'
+  get 'book/index'
   get 'render/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

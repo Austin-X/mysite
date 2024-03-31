@@ -1,0 +1,5 @@
+<h1> ALL BOOKS BELONGING TO USER "<%= @current_user.name %>" </h1>
+
+<% policy_scope(Book.all).each do |b| %>
+    <p><%= "ID: #{b.id}, AUTHOR_ID: #{b.author.id}" %></p>
+<% end %>
