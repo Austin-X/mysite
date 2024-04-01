@@ -1,24 +1,7 @@
-# README
+# Hi
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is just a repo where I test some Ruby on Rails stuff.
 
-Things you may want to cover:
+This app is deployed with a production env on [mailtrap123.club](https://mailtrap123.club/) and on https://mysite-i6i2.onrender.com/
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+For now, the '/graphiql' path is disabled on all production envs as I have not paid for the database server yet.
