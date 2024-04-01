@@ -5,6 +5,7 @@ module Types
     field :id, ID, null: false
     field :name, String
     field :published, Integer
+    field :books, [Types::BookType]
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
   end
