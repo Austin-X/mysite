@@ -2,18 +2,11 @@
 
 module Types
   class BookType < Types::BaseObject
-    def self.authorized?(object, context)
-      object.id < 10
-    end
-
-    def self.scope_items(items, context)
-      items.where('id < 10')
-    end
-
     field :id, ID, null: false
     field :published_at, GraphQL::Types::ISO8601DateTime, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
+    field :author, Types::AuthorType
     field :author_id, Integer, null: false
   end
 end
