@@ -7,7 +7,6 @@ module Types
     end
 
     def self.scope_items(items, context)
-      items.each { |x| puts "ID: #{x.id}" }
       items.where('id < 10')
     end
 
