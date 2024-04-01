@@ -8,6 +8,7 @@ module Types
 
     def self.authorized?(object, context)
       return true if !object.respond_to?(:model)
+
       model = object.model
       belongs_to_author_model = model.reflect_on_all_associations(:belongs_to).map { |x| x.name }.include?(:author)
       if model == Author
@@ -20,7 +21,8 @@ module Types
     end
 
     def self.scope_items(items, context)
-      return true if !items.respond_to?(:model)
+      return items.all if !items.respond_to?(:model)
+
       model = items.model
       belongs_to_author_model = model.reflect_on_all_associations(:belongs_to).map { |x| x.name }.include?(:author)
       if model == Author
@@ -28,7 +30,7 @@ module Types
       elsif belongs_to_author_model
         return items.where(author_id: 1)
       else
-        return true
+        return items.all
       end
     end
   end
