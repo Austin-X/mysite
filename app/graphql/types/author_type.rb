@@ -2,6 +2,10 @@
 
 module Types
   class AuthorType < Types::BaseObject
+    def self.model
+      ::Author
+    end
+    
     field :id, ID, null: false
     field :name, String
     field :published, Integer

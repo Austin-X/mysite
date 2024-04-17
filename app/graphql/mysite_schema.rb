@@ -9,12 +9,16 @@ class MysiteSchema < GraphQL::Schema
 
   # GraphQL-Ruby calls this when something goes wrong while running a query:
 
+  def self.unauthorized_object(error)
+    raise GraphQL::ExecutionError, "The resource #{error.type.graphql_name} requires extra permissions to access"
+  end
 
   # Union and Interface Resolution
-  def self.resolve_type(_abstract_type, _obj, _ctx)
+  def self.resolve_type(type, obj, ctx)
     # TODO: Implement this method
     # to return the correct GraphQL object type for `obj`
-    raise(GraphQL::RequiredImplementationMissingError)
+    # raise(GraphQL::RequiredImplementationMissingError)
+    type
   end
 
   # Stop validating when it encounters this many errors:

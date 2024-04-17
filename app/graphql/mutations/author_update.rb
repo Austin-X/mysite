@@ -2,18 +2,18 @@
 
 module Mutations
   class AuthorUpdate < BaseMutation
-    description "Updates a author by id"
+    description "Updates an author by id"
 
-    field :author, Types::AuthorType, null: false
+    input_type Types::AuthorInputType
 
-    argument :id, ID, required: true
-    argument :name, String, required: false
+    field :author, Types::AuthorType
 
-    def resolve(id:, name:)
-      author = ::Author.find(id)
-      raise GraphQL::ExecutionError.new "Error updating author", extensions: author.errors.to_hash unless author.update(name: name)
-      
-      { author: author }
+    def resolve(author:, **extr)
+      author_record = Author.find(author.id)
+
+      if author_record.update(extr)
+       { author: author_record }
+      end
     end
   end
 end
