@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
 
     cookies.delete('XSRF-TOKEN')
     cookies['XSRF-TOKEN'] =
-      { value: form_authenticity_token, secure: !Rails.env.development?, domain: '.' }
+      { value: form_authenticity_token, secure: !Rails.env.development? }
   end
 end
