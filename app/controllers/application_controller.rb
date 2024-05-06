@@ -13,9 +13,10 @@ class ApplicationController < ActionController::Base
     $hst = request.host
     $dom = request.domain
 
-    cookies.delete('XSRF-TOKEN', domain: 'mailtrap123.club')
-
     cookies['XSRF-TOKEN'] =
       { value: form_authenticity_token, secure: !Rails.env.development? }
+
+    cookies.delete('XSRF-TOKEN', domain: 'sandbox.mailtrap123.club')
+    cookies.delete('XSRF-TOKEN', domain: '.mailtrap123.club')
   end
 end
