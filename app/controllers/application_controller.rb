@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
     $hst = request.host
     $dom = request.domain
     cookies['XSRF-TOKEN'] =
-      { value: form_authenticity_token, secure: false, domain: %w[lawl testing] }
+      { value: form_authenticity_token, secure: Rails.env.development?, domain: %w[lawl testing] }
   end
 end
