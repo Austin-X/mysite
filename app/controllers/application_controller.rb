@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
   def set_csrf_cookie
     $hst = request.host
     $dom = request.domain
+
     cookies['XSRF-TOKEN'] =
-      { value: form_authenticity_token, secure: Rails.env.development?, domain: %w[lawl testing] }
+      { value: form_authenticity_token, secure: Rails.env.development? }
   end
 end
